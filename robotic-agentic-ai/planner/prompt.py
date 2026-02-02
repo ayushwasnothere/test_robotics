@@ -137,7 +137,6 @@ Formatting rules:
 ---
 
 FINAL CHECK (INTERNAL, SILENT):
-Silently verify all constraints.
-Do NOT explain reasoning.
+Verify all constraints.
 If a deterministic plan cannot be produced, return [].
 """

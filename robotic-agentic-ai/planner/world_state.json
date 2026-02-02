@@ -2,38 +2,43 @@
   "containers": [
     {
       "container_id": "tube_1",
-      "type": "graduated_beaker",
+      "type": "test_tube",
       "shape": "cylindrical",
       "color": "blue",
-      "status": "filled"
+      "status": "filled",
+      "fill_percentage": 100
     },
     {
       "container_id": "tube_2",
-      "type": "graduated_beaker",
+      "type": "test_tube",
       "shape": "cylindrical",
       "color": "white",
-      "status": "filled"
+      "status": "filled",
+      "fill_percentage": 100
     },
     {
       "container_id": "tube_3",
-      "type": "graduated_beaker",
+      "type": "test_tube",
       "shape": "cylindrical",
       "color": "yellow",
-      "status": "filled"
+      "status": "filled",
+      "fill_percentage": 100
     },
     {
       "container_id": "beaker_1",
       "type": "beaker",
       "shape": "wide",
       "color": "transparent",
-      "status": "filled"
+      "status": "filled",
+      "fill_percentage": 100
     },
     {
       "container_id": "beaker_2",
       "type": "beaker",
       "shape": "wide",
       "color": "transparent",
-      "status": "empty"
+      "status": "empty",
+      "fill_percentage": 0
     }
   ],
   "gripper_state": "open"
