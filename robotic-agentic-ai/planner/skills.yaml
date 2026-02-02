@@ -21,7 +21,7 @@ skills:
 
   - name: rotate_container
     args: [container_id]
-    description: Rotates a held container (beaker, for mixing).
+    description: Executes a motion to rotate the container in a mixing like motion.
 
   - name: verify_color
     args: [color, container_id]

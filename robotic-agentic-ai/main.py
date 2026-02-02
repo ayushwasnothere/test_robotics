@@ -16,7 +16,10 @@ def main():
 
     world_state = load_world_state()
     action_plan = plan("Create green color", world_state)
+    print(json.dumps(action_plan, indent=2))
     action_plan = check_skills_validity(action_plan)
+    print("\n\n\nValidated Action Plan:")
+    print(json.dumps(action_plan, indent=2))
 
     initial_state = cast(
         ExecState,

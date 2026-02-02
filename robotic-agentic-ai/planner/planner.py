@@ -27,6 +27,7 @@ def plan(task: str, world_state: dict) -> list[SkillCall]:
         base_url="http://10.11.51.217:11434",
         temperature=0,
         reasoning=True,
+        reasoning_effort="high",
     )
 
     # model = ChatGoogleGenerativeAI(
@@ -72,6 +73,7 @@ def plan(task: str, world_state: dict) -> list[SkillCall]:
     ]
 
     res = model.invoke(messages)
+    print(res + "\n\n\n\n")
     response_text = str(res.content).strip()
 
     return json.loads(response_text)

@@ -19,11 +19,31 @@ DOMAIN SEMANTICS (AUTHORITATIVE — READ CAREFULLY):
 - SKILL SEMANTICS define what actions do and may encode real-world domain facts.
 - Any effect that is a well-known, deterministic consequence of skill semantics
   MUST be treated as a FACT, NOT an assumption.
+- Well-known physical and chemical domain laws are treated as deterministic facts
+  when enabled by available skills.
+
+SKILL–DOMAIN ACTIVATION (AUTHORITATIVE):
+
+- Skills may causally enable well-known deterministic domain laws.
+- A domain law is enabled if the physical preconditions for that law
+  are directly produced by the effects of a skill.
+- Once enabled, the consequences of that domain law are treated as facts.
+
+DETERMINISTIC DOMAIN LAW EFFECTS (AUTHORITATIVE):
+
+- When a deterministic domain law is enabled, it produces new symbolic facts
+  that update the properties of existing objects.
+- These facts are considered as valid and concrete as WORLD STATE properties
+  for all subsequent planning steps.
 
 IMPORTANT:
 - Domain facts implied by skill usage are NOT assumptions.
 - An assumption ONLY occurs when inventing objects, properties, or capabilities
   not grounded in WORLD STATE or AVAILABLE SKILLS.
+
+NOTE:
+- The planner must prefer applying deterministic domain laws over declaring
+  a task impossible when skill effects establish their preconditions.
 
 ---
 
@@ -97,7 +117,7 @@ TASK:
 OUTPUT FORMAT (STRICT):
 
 Return a VALID JSON ARRAY.
-[<element1>, <element2>, ...]
+[{{<element1>}}, {{<element2>}}, ...]
 
 Each element MUST match exactly:
 
