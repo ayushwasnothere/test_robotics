@@ -1,0 +1,20 @@
+{
+  "containers": [
+    { "container_id": "tube_1", "type": "tube", "color": "blue" },
+    { "container_id": "tube_2", "type": "tube", "color": "white" },
+    { "container_id": "tube_3", "type": "tube", "color": "yellow" },
+    {
+      "container_id": "beaker_1",
+      "type": "beaker",
+      "color": "transparent",
+      "status": "filled"
+    },
+    {
+      "container_id": "beaker_2",
+      "type": "beaker",
+      "color": "transparent",
+      "status": "empty"
+    }
+  ],
+  "gripper_state": "open"
+}

@@ -1,0 +1,28 @@
+skills:
+  - name: go_home
+    args: []
+    description: Moves the robot arm to its predefined home/rest joint configuration.
+
+  - name: verify_grasp
+    args: []
+    description: Checks if there is any container within the grasp of the gripper.
+
+  - name: grasp_container
+    args: [container_id]
+    description: Composite action to approach and pick a specific container.
+
+  - name: release_container
+    args: [container_id]
+    description: Composite action to place a container and retract the arm safely.
+
+  - name: pour_liquid
+    args: [source_id, target_id]
+    description: Executes a motion to pour contents from source to target if any container is in grasp.
+
+  - name: rotate_container
+    args: [container_id]
+    description: Rotates a held container (beaker, for mixing).
+
+  - name: verify_color
+    args: [color, container_id]
+    description: Uses the vision pipeline to verify if the liquid in the container matches the target color.
