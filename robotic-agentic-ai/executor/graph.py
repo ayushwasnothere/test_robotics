@@ -10,7 +10,11 @@ MAX_RETRIES = 2
 
 def send_step(state: ExecState) -> ExecState:
     if state["step"] >= len(state["plan"]):
-        return {**state, "last_ok": True}
+        return {
+            **state,
+            "last_ok": True,
+            "current_task_id": None,
+        }
 
     skill = state["plan"][state["step"]]
     task_id = send_skill(skill)
@@ -19,6 +23,12 @@ def send_step(state: ExecState) -> ExecState:
         **state,
         "current_task_id": task_id,
     }
+
+
+def after_send(state: ExecState):
+    if state["current_task_id"] is None:
+        return "update"
+    return "wait"
 
 
 def wait_step(state: ExecState) -> ExecState:
@@ -77,6 +87,7 @@ def build_executor():
     g = StateGraph(ExecState)
 
     g.add_node("send", send_step)
+
     g.add_node("wait", wait_step)
     g.add_node("update", update_state)
     g.add_node("success", success_node)
@@ -84,7 +95,14 @@ def build_executor():
 
     g.set_entry_point("send")
 
-    g.add_edge("send", "wait")
+    g.add_conditional_edges(
+        "send",
+        after_send,
+        {
+            "wait": "wait",
+            "update": "update",
+        },
+    )
     g.add_edge("wait", "update")
 
     g.add_conditional_edges(

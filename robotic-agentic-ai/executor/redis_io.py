@@ -12,19 +12,27 @@ EVENT_GROUP = "langgraph"
 EVENT_CONSUMER = "lg_1"
 
 
+import json
+import uuid
+
+import redis
+
+r = redis.Redis(decode_responses=True)
+
+
 def send_skill(skill: dict) -> str:
     task_id = str(uuid.uuid4())
 
     r.xadd(
-        TASK_STREAM,
+        "robot.tasks",
         {
             "task_id": task_id,
-            "skill": skill["name"],
-            "params": json.dumps(skill.get("params", {})),
+            "skill": skill["skill_name"],
+            "params": json.dumps(skill["arguments"]),
         },
     )
 
-    print(f"[REDIS] Sent task {task_id}")
+    print(f"[REDIS] Sent task {task_id} ({skill['skill_name']})")
     return task_id
 
 

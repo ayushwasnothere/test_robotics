@@ -26,6 +26,7 @@ def main():
             "retries": 0,
             "last_ok": None,
             "outcome": None,
+            "current_task_id": None,
         },
     )
     executor = build_executor()
